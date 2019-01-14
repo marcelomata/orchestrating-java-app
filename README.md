@@ -1,6 +1,6 @@
 # Example application #
 
-A simple Spring Boot application that sports a REST API and does persistence using JPA.
+A simple Spring Boot application that suports a REST API and does persistence using JPA.
 
 # 01-Migrating the database to MySQL
 To perform the tests, it is required to have docker ce installed in your Linux distribution. Link to [Ubuntu installation](https://docs.docker.com/v17.12/install/linux/docker-ce/ubuntu/#install-docker-ce-1). 
