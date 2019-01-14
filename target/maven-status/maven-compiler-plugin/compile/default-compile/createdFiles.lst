@@ -1,5 +1,0 @@
-sample/hateoas/domain/CustomerRepository.class
-sample/hateoas/SampleHateoasApplication.class
-sample/hateoas/web/SwaggerConfiguration.class
-sample/hateoas/web/CustomerController.class
-sample/hateoas/domain/Customer.class
