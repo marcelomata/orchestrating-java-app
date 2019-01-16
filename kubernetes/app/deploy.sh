@@ -1,7 +1,7 @@
 #!/bin/bash
 
-db_ip=$(kubectl describe pod bravidb-deployment | grep IP | cut -d' ' -f2- |  tr -d ' ')
-sed -i -e "s/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}/$db_ip/g" ../../src/main/resources/application.properties
+node_port=$(kubectl get service bravidb-deployment --output jsonpath='{.spec.ports[*].nodePort}')
+sed -i -e "s/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}:[0-9]\{1,5\}/192.168.99.100:$node_port/g" ../../src/main/resources/application.properties
 
 cd ../.. && mvn clean package -DskipTests && cd kubernetes/app
 

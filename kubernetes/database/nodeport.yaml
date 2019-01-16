@@ -9,5 +9,6 @@ spec:
   ports:
   - name: database
     port: 3306
+    hostPort: 8090
     protocol: TCP
     targetPort: 3306

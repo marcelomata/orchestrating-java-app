@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: braviapp-deployment
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: braviapp
@@ -18,4 +18,3 @@ spec:
         ports:
         - name: http
           containerPort: 8090
-          hostPort: 8090

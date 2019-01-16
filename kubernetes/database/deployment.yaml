@@ -18,4 +18,3 @@ spec:
         ports:
         - name: http
           containerPort: 3306
-          hostPort: 3306

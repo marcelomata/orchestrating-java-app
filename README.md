@@ -37,6 +37,42 @@ To shutdown everything execute the shutdown.sh file on the same folder.
 
 On this example, no action occurs when the automated tests fail.
 
+# 03-Update the application with minikube
+
+This step will update the application. This update do not make the application unavailable. 
+
+To update the application running in the cluster, is required to update the version of the container image in the file kubernetes/app/newversion.yaml, as this example bellow:
+```
+...
+    spec:
+      containers:
+      - name: braviapp
+        image: marcelomata/braviapp:0.0.11
+...
+```
+
+After that, execute the following file in the kubernetes folder:
+```
+	# if you are in the kubernetes folder
+	./update-app.sh -v '0.0.11'
+```
+
+Note that the new version of the container image must to be passed on v parameter.
+
+One way to check how the system is answering the request is execute this command:
+```
+while true; do curl http://192.168.99.100:$(kubectl get service braviapp-deployment --output jsonpath='{.spec.ports[*].nodePort}')/customers; sleep 0.3; done
+```
+
+To shutdown everything execute the shutdown.sh file on the same folder.
+
+```
+	# if you are in the root of maven project
+	cd kubernetes && ./shutdown.sh
+```
+
+
+The tools and OS used on this examples were: Docker (version 18.06.1-ce), kubectl (version v1.13.2), Minikube (version v0.32.0), Maven (version 3.3.9), JDK (version 1.8.0_181) and Ubuntu 16.04.
 
 
 This project is based on Spring Boot's [HATEOAS example](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-hateoas).
