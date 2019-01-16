@@ -39,7 +39,7 @@ On this example, no action occurs when the automated tests fail.
 
 # 03-Update the application with minikube
 
-This step will update the application. This update do not make the application unavailable. 
+This step will update the application. This update does not make the application unavailable. 
 
 To update the application running in the cluster, is required to update the version of the container image in the file kubernetes/app/newversion.yaml, as this example bellow:
 ```
