@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: bravidb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bravidb
+  template:
+    metadata:
+      labels:
+        app: bravidb
+    spec:
+      containers:
+      - name: bravidb
+        image: marcelomata/bravidb:0.0.1
+        ports:
+        - name: http
+          containerPort: 3306
+          hostPort: 3306

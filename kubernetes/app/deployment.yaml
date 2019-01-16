@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: braviapp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: braviapp
+  template:
+    metadata:
+      labels:
+        app: braviapp
+    spec:
+      containers:
+      - name: braviapp
+        image: marcelomata/braviapp:0.0.1
+        ports:
+        - name: http
+          containerPort: 8090
+          hostPort: 8090
