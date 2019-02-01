@@ -1,20 +1,20 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: braviapp-deployment
+  name: antarezapp-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: braviapp
+      app: antarezapp
   template:
     metadata:
       labels:
-        app: braviapp
+        app: antarezapp
     spec:
       containers:
-      - name: braviapp
-        image: marcelomata/braviapp:0.0.1
+      - name: antarezapp
+        image: marcelomata/antarezapp:0.0.1
         ports:
         - name: http
           containerPort: 8090

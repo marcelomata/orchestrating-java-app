@@ -1,20 +1,20 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: bravidb-deployment
+  name: antarezdb-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: bravidb
+      app: antarezdb
   template:
     metadata:
       labels:
-        app: bravidb
+        app: antarezdb
     spec:
       containers:
-      - name: bravidb
-        image: marcelomata/bravidb:0.0.1
+      - name: antarezdb
+        image: marcelomata/antarezdb:0.0.1
         ports:
         - name: http
           containerPort: 3306

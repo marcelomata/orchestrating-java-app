@@ -46,8 +46,8 @@ To update the application running in the cluster, is required to update the vers
 ...
     spec:
       containers:
-      - name: braviapp
-        image: marcelomata/braviapp:0.0.11
+      - name: antarezapp
+        image: marcelomata/antarezapp:0.0.11
 ...
 ```
 
@@ -61,7 +61,7 @@ Note that the new version of the container image must to be passed on v paramete
 
 One way to check how the system is answering the request is execute this command:
 ```
-while true; do curl http://192.168.99.100:$(kubectl get service braviapp-deployment --output jsonpath='{.spec.ports[*].nodePort}')/customers; sleep 0.3; done
+while true; do curl http://192.168.99.100:$(kubectl get service antarezapp-deployment --output jsonpath='{.spec.ports[*].nodePort}')/customers; sleep 0.3; done
 ```
 
 To shutdown everything execute the shutdown.sh file on the same folder.

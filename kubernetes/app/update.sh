@@ -20,17 +20,17 @@ if [ -z "$VERSION" ]; then
   exit 1;
 fi
 
-node_port=$(kubectl get service bravidb-deployment --output jsonpath='{.spec.ports[*].nodePort}')
+node_port=$(kubectl get service antarezdb-deployment --output jsonpath='{.spec.ports[*].nodePort}')
 sed -i -e "s/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}:[0-9]\{1,5\}/192.168.99.100:$node_port/g" ../../src/main/resources/application.properties
 
 cd ../.. && mvn clean package -DskipTests && cd kubernetes/app
 
 cp ../../target/spring-boot-sample-hateoas-*.jar ./
-docker build -t "braviapp:"$VERSION .
-docker tag braviapp:$VERSION marcelomata/braviapp:$VERSION
-docker push marcelomata/braviapp:$VERSION
+docker build -t "antarezapp:"$VERSION .
+docker tag antarezapp:$VERSION marcelomata/antarezapp:$VERSION
+docker push marcelomata/antarezapp:$VERSION
 rm spring-boot-sample-hateoas-*.jar
 
 # fazer o update no kubernetes
 kubectl apply -f newversion.yaml --record
-kubectl rollout status deployment braviapp-deployment
+kubectl rollout status deployment antarezapp-deployment
